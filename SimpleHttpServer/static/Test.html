@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Test</title>
+    </head>
+    <body>
+        <h1>Test (Normal) Form</h1>
+        <form method="post" action="/Echo/Form">
+            <label>Echo String</label>
+            <input name="SayThis" /><br />
+            <input name="ToUpper" value="true" type="hidden" />
+            <label>Remember Me?</label>
+            <input name="RememberMe" type="checkbox" /><br />
+            <label>Date</label>
+            <input name="SendDate" type="input" />
+            <input type="submit" />
+        </form>
+        <h1>Test Form</h1>
+        <form method="post" action="/Echo/File" enctype="multipart/form-data">
+            <label>Name</label>
+            <input name="FileName" /><br />
+            <label>Description</label>
+            <input name="FileNameDescription" /><br />
+            <label>File 1</label>
+            <input name="FileBody1" type="file" /><br />
+            <label>File 2</label>
+            <input name="FileBody2" type="file" /><br />
+            <label>File 3</label>
+            <input name="FileBody3" type="file" /><br />
+            <br />
+            <input type="submit" />
+        </form>
+    </body>
+</html>

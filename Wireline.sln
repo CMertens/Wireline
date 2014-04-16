@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wireline.Core", "Wireline.Core\Wireline.Core.csproj", "{65FC8BA7-8592-4861-9487-8D0444B6668A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{B993167B-51B8-4273-898F-F5C5CB9E0809}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleHttpServer", "SimpleHttpServer\SimpleHttpServer.csproj", "{39010B31-D8FA-4DA5-B226-C2D1600764D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMud", "WebMud\WebMud.csproj", "{A5CDA1BC-548C-4590-986E-FF8E029E2533}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65FC8BA7-8592-4861-9487-8D0444B6668A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65FC8BA7-8592-4861-9487-8D0444B6668A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65FC8BA7-8592-4861-9487-8D0444B6668A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65FC8BA7-8592-4861-9487-8D0444B6668A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39010B31-D8FA-4DA5-B226-C2D1600764D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39010B31-D8FA-4DA5-B226-C2D1600764D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39010B31-D8FA-4DA5-B226-C2D1600764D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39010B31-D8FA-4DA5-B226-C2D1600764D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5CDA1BC-548C-4590-986E-FF8E029E2533}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5CDA1BC-548C-4590-986E-FF8E029E2533}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5CDA1BC-548C-4590-986E-FF8E029E2533}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5CDA1BC-548C-4590-986E-FF8E029E2533}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{39010B31-D8FA-4DA5-B226-C2D1600764D4} = {B993167B-51B8-4273-898F-F5C5CB9E0809}
+		{A5CDA1BC-548C-4590-986E-FF8E029E2533} = {B993167B-51B8-4273-898F-F5C5CB9E0809}
+	EndGlobalSection
+EndGlobal
