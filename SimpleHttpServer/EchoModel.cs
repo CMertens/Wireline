@@ -6,39 +6,41 @@ using System.Threading.Tasks;
 using Wireline.Core.Attributes;
 
 namespace SimpleHttpServer {
-    public class EchoModel {
+    internal class EchoModel
+    {
         [FormPropertyBinding("SayThis", false)]
         [RequiredBinding]
-        public String EchoString { get; set; }
+        internal String EchoString { get; set; }
 
         [FormPropertyBinding("RememberMe", false)]
         [OptionalBinding]
-        public bool RememberUser { get; set; }
+        internal bool RememberUser { get; set; }
 
         [FormPropertyBinding("ToUpper", false)]
         [OptionalBinding]
         [IgnoreTypeMismatchFailures]
-        public bool UseUpperCase { get; set; }
+        internal bool UseUpperCase { get; set; }
 
         [FormPropertyBinding("SendDate", false)]
         [OptionalBinding]
         [IgnoreTypeMismatchFailures]
-        public DateTime SendOnDateTime { get; set; }
+        internal DateTime SendOnDateTime { get; set; }
 
         [CookiePropertyBinding("SES-PUBLIC")]
         [OptionalBinding]
-        public String SessionKey { get; set; }
+        internal String SessionKey { get; set; }
 
         [CookiePropertyBinding("SES-EXPIRES")]
         [OptionalBinding]
         [IgnoreTypeMismatchFailures]
-        public long SessionExpiresAt { get; set; }
+        internal long SessionExpiresAt { get; set; }
 
         [CookiePropertyBinding("SES-FINGERPRINT")]
         [OptionalBinding]
-        public String SessionFingerprint { get; set; }
+        internal String SessionFingerprint { get; set; }
 
-        public EchoModel() {
+        internal EchoModel()
+        {
         }
     }
 }

@@ -6,12 +6,35 @@ using System.Threading.Tasks;
 using Wireline.Core;
 
 namespace SimpleHttpServer {
-    class PageCreator {
+    internal class PageCreator {
         long increment = 0;
-
+        Dictionary<String, UserSession> sessions = new Dictionary<string, UserSession>();
         String staticFilePath = ".";
+        Random rand = new Random();
+        String sessionKeyString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890_";
 
-        public void GetEchoForm(HttpServerState Server, HttpRequest Request, HttpResponse Response, Object Model) {
+        private UserSession GetSession(String id)
+        {
+            String key = id;
+            if (this.sessions.ContainsKey(id) == false)
+            {
+                key = UserSession.CreateSessionString(rand, sessionKeyString, 32);
+                while (sessions.ContainsKey(key))
+                {
+                    key = UserSession.CreateSessionString(rand, sessionKeyString, 32);
+                }
+                sessions.Add(key, new UserSession(key));
+            }
+
+            return sessions[key];
+        }
+
+        private UserSession GetSession(HttpRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void GetEchoForm(HttpServerState Server, HttpRequest Request, HttpResponse Response, Object Model) {
             try {
                 EchoModel model = ((EchoModel)Model);
                 String str = model.EchoString;
@@ -41,7 +64,8 @@ namespace SimpleHttpServer {
         }
 
 
-        public void GetEchoFile(HttpServerState Server, HttpRequest Request, HttpResponse Response, Object Model) {
+        internal void GetEchoFile(HttpServerState Server, HttpRequest Request, HttpResponse Response, Object Model)
+        {
             increment++;
             String idx = "<h1>Form Results</h1>";
             foreach (String key in Request.HeaderCollection.AllKeys) {
@@ -86,7 +110,8 @@ namespace SimpleHttpServer {
             Response.Response.OutputStream.Write(b, 0, idx.Length);
         }
 
-        public void GetStaticFile(HttpServerState Server, HttpRequest Request, HttpResponse Response, Object Model) {
+        internal void GetStaticFile(HttpServerState Server, HttpRequest Request, HttpResponse Response, Object Model)
+        {
             String path = staticFilePath + Request.Request.Url.AbsolutePath;
             if (System.IO.File.Exists(path) == false) {
                 String page = this.CreateStatusPage(404, Request.Request.Url, null);
@@ -105,7 +130,8 @@ namespace SimpleHttpServer {
             }
         }
 
-        public void CreateHomePage(HttpServerState Server, HttpRequest Request, HttpResponse Response, Object Model) {
+        internal void CreateHomePage(HttpServerState Server, HttpRequest Request, HttpResponse Response, Object Model)
+        {
             increment++;
             String idx = "<h1>A long time ago, in a galaxy far, far away...</h1><h2>It's the ship that made the Kessel run in less than " + increment + " parsecs!</h2><h3>Aren't you a little short for a stormtrooper?</h3>";
             Response.Response.StatusCode = 200;
@@ -121,7 +147,8 @@ namespace SimpleHttpServer {
             Response.Response.OutputStream.Write(b, 0, idx.Length);
         }
 
-        public String CreateStatusPage(int status, Uri path, Exception exception){            
+        internal String CreateStatusPage(int status, Uri path, Exception exception)
+        {            
             increment++;
             if (status == 404) {
                 return ("<h1>404</h1><h2>This is not the " + path.AbsolutePath + " you are looking for.</h2><h3>Move along.</h3>");
